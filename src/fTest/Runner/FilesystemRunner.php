@@ -69,7 +69,7 @@ class FilesystemRunner implements RunnerInterface
      */
     public function run()
     {
-        foreach ($this->tests as $test) {
+        foreach ($this->getTests() as $test) {
             $test->execute();
         }
     }

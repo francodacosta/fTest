@@ -112,13 +112,13 @@ abstract class AbstractTest implements TestInterface
         $this->configure();
         $this->test();
         $result = $this->checkTestResult();
-        if (! $result instanceof \fTest\Result) {
+        if (! $result instanceof \fTest\Test\Result) {
             if (is_object($result)) {
                 $type = get_class($result);
             } else {
                 $type = gettype($result);
             }
-            throw new \UnexpectedValueException('Expecting fTest\Result from Test::checkResults but got '. $type);
+            throw new \UnexpectedValueException('Expecting fTest\Test\Result from Test::checkResults but got '. $type);
         }
         $this->result = $result;
     }

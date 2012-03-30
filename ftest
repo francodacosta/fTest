@@ -4,9 +4,11 @@ include __DIR__ . "/vendor/.composer/autoload.php";
 
 use fTest\Application;
 use fTest\Command\Documentation;
+use fTest\Command\TestsCommand;
 
 $app = new Application('fTest', '0.1');
 $app->add(new documentation);
+$app->add(new TestsCommand);
 $app->run();
 
 /*
