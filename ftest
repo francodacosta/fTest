@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+include __DIR__ . "/vendor/.composer/autoload.php";
+
+use fTest\Application;
+use fTest\Command\Documentation;
+
+$app = new Application('fTest', '0.1');
+$app->add(new documentation);
+$app->run();
+
+/*
+class foo extends AbstractTest
+{
+    public function test()
+    {
+        echo "A";
+    }
+}
+
+$foo = new foo();
+
+
+$runner = new TestRunner();
+$runner->add($foo);
+
+$templateFactory = new Factory;
+$writter = $templateFactory->getTemplateWritter($runner);
+
+$writter->write();
+
+*/

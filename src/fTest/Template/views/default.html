@@ -1,0 +1,11 @@
+<html>
+<head>
+</head>
+<body>
+    <h1>tests</h1>
+    
+    {% for test in tests %}
+    	{% include 'test.html.twig' with {'test' : test} %} 
+    {% endfor %}
+</body>
+</html>

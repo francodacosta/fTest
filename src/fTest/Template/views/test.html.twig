@@ -1,0 +1,14 @@
+<div class="test results {{ test.getName() }}">
+    <a name="test.{{  test.getName() }}"></a>
+    <h2>{{ test.getTitle() }}</h2>
+    <p>{{ test.getDescription() }}</p>
+
+    {% if test.getResult().getCode() > 0 %}
+       <p class="unstable"><strong>Not stable</strong> {{ test.getResult().getCode() }}: {{ test.getResult().getMessage() }}</p>
+    {% endif %}
+
+    <h3>Code:</h3>
+    <pre>
+{{ test.getCode() }}
+    </pre>
+</div>

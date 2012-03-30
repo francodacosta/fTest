@@ -1,0 +1,13 @@
+#eclipse stuff
+.buildpath
+.project
+.settings
+
+#composer
+composer.phar
+
+#composer managed folders
+vendor/monolog/
+vendor/symfony/
+vendor/twig/
+vendor/.composer
