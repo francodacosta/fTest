@@ -36,4 +36,9 @@ class Settings
         $this->projectLogo = $projectLogo;
     }
 
+    public function getTemplateRoot()
+    {
+        return __DIR__ . '/views/';
+    }
+
 }

@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+
+pre.code {
+    display: none;
+}
+
+.codeContainer pre.code.expanded {
+    display: block;
+}

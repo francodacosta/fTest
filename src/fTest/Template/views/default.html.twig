@@ -6,6 +6,7 @@
             <title>{{ config.getProjectTitle() }}</title>
         {% endblock %}
 
+        <link rel="stylesheet" href="{{ config.getTemplateRoot() }}asset/css/ftest.css" />
     </head>
     <body>
 
@@ -27,5 +28,10 @@
         {% for test in tests %}
         	{% include 'testItem.html.twig' with {'test' : test} %}
         {% endfor %}
+
+        {% block javascript %}
+            <script type="text/javascript" src="{{ config.getTemplateRoot() }}asset/js/ext-core-debug.js"></script>
+            <script type="text/javascript" src="{{ config.getTemplateRoot() }}asset/js/ftest.js"></script>
+        {% endblock %}
     </body>
 </html>
