@@ -70,12 +70,12 @@ interface TestInterface
      */
     public function renderResults();
 
-    /**
-     * checks the tests to see if it was sucessfull or not
-     *
-     * @return Result
-     */
-    public function checkTestResult();
+//     /**
+//      * checks the tests to see if it was sucessfull or not
+//      *
+//      * @return Result
+//      */
+//     protected function checkTestResult();
 
     /**
      * executes the test

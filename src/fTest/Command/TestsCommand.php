@@ -9,12 +9,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use fTest\Runner\FilesystemRunner;
+use fTest\Runner\ConsoleRunnerDecorator;
 
 class TestsCommand extends BaseCommand
 {
     public function configure()
     {
-        $this->setName('document');
+        $this->setName('test');
 
         $this->setDefinition(array(
             new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located', '.'),
@@ -28,19 +29,26 @@ class TestsCommand extends BaseCommand
         $tests = $input->getOption('tests');
 
         $output->writeln("<info>Running tests, might take a while</info>");
-        $runner = new FilesystemRunner($tests);
+        $runner = new ConsoleRunnerDecorator(new FilesystemRunner($tests), $this->output);
 
+        ob_start();
         $runner->run();
+        ob_end_clean();
 
+        $count = 0;
         foreach($runner->getTests() as $test)
         {
             $result = $test->getResult();
             if ($result->getCode() > 0) {
-                $output->writeln(sprintf("<error>\ttest %s failed with error %3d message: %s</error>", $test->getName(), $result->getCode(), $result->getMessage()));
+                $count++;
             }
         }
 
 
-        $output->writeln(sprintf("<comment>Executed %d tests</comment>", count($runner->getTests())));
+        if (0 == $count) {
+            $this->writeSuccess("All tests passed");
+        } else {
+            $this->writeError(sprintf("%d tests failed", $count));
+        }
     }
 }

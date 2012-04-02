@@ -1,5 +1,7 @@
 <?php
 namespace fTest\Test;
+use fTest\Test\Result\Failure;
+use fTest\Test\Result\Skipped;
 
 abstract class AbstractTest implements TestInterface
 {
@@ -12,9 +14,7 @@ abstract class AbstractTest implements TestInterface
      * (non-PHPdoc)
      * @see fTest.TestInterface::configure()
      */
-    public function configure()
-    {
-    }
+    abstract public function configure();
 
     /**
      * (non-PHPdoc)
@@ -89,9 +89,9 @@ abstract class AbstractTest implements TestInterface
      * (non-PHPdoc)
      * @see fTest.TestInterface::checkTestResult()
      */
-    public function checkTestResult()
+    protected function checkTestResult()
     {
-        return new Result(255, 'results not checked');
+        return new Skipped();
     }
 
     /**
@@ -100,7 +100,11 @@ abstract class AbstractTest implements TestInterface
      */
     public function getResult()
     {
-        return $this->result ?: new Result(255, 'results not checked');;
+        if( ! $this->result instanceof \fTest\Test\Result\ResultInterface) {
+            $this->result = $this->checkTestResult();
+        }
+
+        return $this->result;
     }
 
     /**
@@ -109,16 +113,15 @@ abstract class AbstractTest implements TestInterface
      */
     public function execute()
     {
-        $this->configure();
         $this->test();
-        $result = $this->checkTestResult();
-        if (! $result instanceof \fTest\Test\Result) {
+        $result = $this->getResult();
+        if (! $result instanceof \fTest\Test\Result\ResultInterface) {
             if (is_object($result)) {
                 $type = get_class($result);
             } else {
                 $type = gettype($result);
             }
-            throw new \UnexpectedValueException('Expecting fTest\Test\Result from Test::checkResults but got '. $type);
+            throw new \UnexpectedValueException('Expecting fTest\Test\Result\ResultInterface from Test::checkResults but got '. $type);
         }
         $this->result = $result;
     }

@@ -1,17 +1,17 @@
 <?php
-namespace fTest\Test;
+namespace fTest\Test\Result;
 
 /**
  * Represent the result of a text execution
  * @author nuno costa <nuno@francodacosta.com>
  *
  */
-class Result
+class Result implements ResultInterface
 {
-    private $code;
-    private $message;
+    protected $code;
+    protected $message;
 
-    public function __construct($code = 255, $message = 'not executed')
+    public function __construct($code, $message)
     {
         $this->setCode($code);
         $this->setMessage($message);
@@ -30,8 +30,11 @@ class Result
      * @param mixed $code
      */
 
-    public function setCode($code)
+    protected function setCode($code)
     {
+        if (is_nan($code)) {
+            throw new UnexpectedValueException("Result Code must be an Integer");
+        }
         $this->code = $code;
     }
 
@@ -48,7 +51,7 @@ class Result
      * @param string $message
      */
 
-    public function setMessage($message)
+    protected function setMessage($message)
     {
         $this->message = $message;
     }
