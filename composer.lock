@@ -2,11 +2,6 @@
     "hash": "6859165dade46fe8bc627da6f93980a7",
     "packages": [
         {
-            "package": "monolog/monolog",
-            "version": "dev-master",
-            "source-reference": "6c15897ac74bd53572328094eacf03fbb7b8bca7"
-        },
-        {
             "package": "symfony/console",
             "version": "v2.0.12"
         },
