@@ -48,6 +48,7 @@ class FilesystemRunner implements RunnerInterface
      */
     private function add(TestInterface $test)
     {
+        $test->configure();
         $this->tests[] = $test;
     }
 

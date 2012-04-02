@@ -2,6 +2,7 @@
 namespace fTest\Command;
 
 use fTest\Template\Factory;
+use fTest\Template\Settings;
 
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
@@ -19,7 +20,23 @@ class Documentation extends BaseCommand
         $this->setDefinition(array(
             new InputArgument('output folder', InputArgument::OPTIONAL, 'the folder where to store the documentation', './docs'),
             new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located', '.'),
+            new InputOption('template', null, InputArgument::OPTIONAL, 'The root folder where template files are located'),
+            new InputOption('title', null, InputArgument::OPTIONAL, 'The project title'),
+            new InputOption('logo', null, InputArgument::OPTIONAL, 'The project logo'),
         ));
+    }
+
+
+    private function settingsFromOptions(Settings $settings, array $options, InputInterface $input)
+    {
+        foreach($options as $option => $map) {
+            $opt = $input->getOption($option) ;
+            if ($opt) {
+                $settings->$map($opt);
+            }
+        }
+
+        return $settings;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -36,7 +53,14 @@ class Documentation extends BaseCommand
         $output->writeln("<info>Generating documentation, might take a while</info>");
         $runner = new FilesystemRunner($tests);
 
-        $writter = Factory::getTemplateWritter($runner);
+        $settings = $this->settingsFromOptions(new Settings(), array(
+            'template' => 'setTemplateFolder',
+            'title' => 'setProjectTitle',
+            'logo' => 'setProjectLogo'
+        ), $input);
+
+
+        $writter = Factory::getTemplateWritter($runner, $settings);
         $writter->write($outputFolder . DIRECTORY_SEPARATOR . 'index.html');
 
         $output->writeln(sprintf("<comment>Documentation saved to %s/index.html</comment>", realpath($tests)));
