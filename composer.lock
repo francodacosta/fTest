@@ -1,9 +1,10 @@
 {
-    "hash": "a8cb8f81ec3ca74430d109dd94f664df",
+    "hash": "6859165dade46fe8bc627da6f93980a7",
     "packages": [
         {
             "package": "monolog/monolog",
-            "version": "1.0.2"
+            "version": "dev-master",
+            "source-reference": "6c15897ac74bd53572328094eacf03fbb7b8bca7"
         },
         {
             "package": "symfony/console",
@@ -12,7 +13,7 @@
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "6e2fd68e7b62d91692a7adfb959475ab9b840d99"
+            "source-reference": "aa4efe1c0ad78f675d062ae5bf55259e36cbb939"
         }
     ],
     "aliases": []

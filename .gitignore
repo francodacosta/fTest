@@ -11,3 +11,7 @@ vendor/monolog/
 vendor/symfony/
 vendor/twig/
 vendor/.composer
+
+#internal files
+data/
+docs/
