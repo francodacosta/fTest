@@ -17,6 +17,8 @@ class Documentation extends BaseCommand
     {
         $this->setName('document');
 
+        $this->setDescription('generated documentation from configured tests');
+
         $this->setDefinition(array(
             new InputArgument('output folder', InputArgument::OPTIONAL, 'the folder where to store the documentation', './docs'),
             new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located', '.'),

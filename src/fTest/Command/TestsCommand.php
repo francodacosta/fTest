@@ -16,7 +16,7 @@ class TestsCommand extends BaseCommand
     public function configure()
     {
         $this->setName('test');
-
+        $this->setDescription('Executes test cases');
         $this->setDefinition(array(
             new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located', '.'),
         ));

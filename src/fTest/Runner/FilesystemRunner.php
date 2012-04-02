@@ -25,6 +25,10 @@ class FilesystemRunner implements RunnerInterface
         foreach($iterator as $path) {
             $className = basename($path, '.php');
             require $path;
+            if (!class_exists($className)) {
+                //@todo show a message saying the file was found but no class was found
+                continue;
+            }
             $class = new $className;
 
             if ($class instanceof \fTest\Test\TestInterface) {
