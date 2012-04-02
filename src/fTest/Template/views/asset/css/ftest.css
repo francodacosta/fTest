@@ -1,10 +1,54 @@
 @CHARSET "UTF-8";
 
-
-pre.code {
-    display: none;
+body {
+	background: #222;
+	font-family: verdana, Arial, Sans;
+	color: #efefef;
+	font-size: 16px;
 }
 
-.codeContainer pre.code.expanded {
+div.wrapper {
+	width: 800px;
+	margin: auto;
+}
+
+h1 {
+	color: #fff;
+	font-size: 50px;
+	font-weight: normal;
+}
+
+h2 {
+    color: #93B300;
+    font-size: 25px;
+    font-weight: normal;
+}
+
+.syntaxhighlighter {
+    display: none;
+    
+}
+
+.codeContainer .expanded {
     display: block;
+}
+
+div.test.results {
+	margin-left: 40px;
+}
+
+div.test.results h2{
+    margin-left: -20px;
+}
+
+.unstable {
+	color: red;
+	font-size: 12px;
+	padding-left: 50px;
+}
+
+.codeContainer h3,
+.codeContainer h3 a {
+	color: #93B300;
+	font-size: 14px;
 }

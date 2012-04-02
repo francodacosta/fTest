@@ -23,7 +23,6 @@ class Writter
     {
         $twig = $this->twig->getTwig();
         $tests = $this->runner->getTests();
-
         $content = $twig->render("default.html.twig", array('tests' => $tests, 'config' => $this->getSettings()));
 
         file_put_contents($file, $content);

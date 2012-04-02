@@ -10,25 +10,3 @@ $app = new Application('fTest', '0.1');
 $app->add(new documentation);
 $app->add(new TestsCommand);
 $app->run();
-
-/*
-class foo extends AbstractTest
-{
-    public function test()
-    {
-        echo "A";
-    }
-}
-
-$foo = new foo();
-
-
-$runner = new TestRunner();
-$runner->add($foo);
-
-$templateFactory = new Factory;
-$writter = $templateFactory->getTemplateWritter($runner);
-
-$writter->write();
-
-*/

@@ -1,16 +1,18 @@
 
-<div class="test results {{ test.getName() }}">
+<div class="test results {{ test.getName()|escape }}">
     <a name="test.{{  test.getName() }}"></a>
-    <h2>{{ test.getTitle() }}</h2>
+    <h2>{{ test.getTitle() }}
+    {% if test.getResult().getCode() > 0 %}
+       <span class="unstable"><strong>Not stable</strong> {{ test.getResult().getCode() }}: {{ test.getResult().getMessage() }}</span>
+    {% endif %}
+    </h2>
     <p>{{ test.getDescription() }}</p>
 
-    {% if test.getResult().getCode() > 0 %}
-       <p class="unstable"><strong>Not stable</strong> {{ test.getResult().getCode() }}: {{ test.getResult().getMessage() }}</p>
-    {% endif %}
+
 
     <div class="codeContainer">
         <h3 class="code"><a href="#">Code:</a></h3>
-        <pre class="code">
+        <pre class="code brush: php;">
     {{ test.getCode() }}
         </pre>
     </div>

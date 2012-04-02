@@ -14,6 +14,7 @@ class FilesystemRunner implements RunnerInterface
     private $tests = array();
     private $results = array();
     private $basePath = null;
+    private $loaded = false;
 
     public function __construct($path)
     {
@@ -36,6 +37,8 @@ class FilesystemRunner implements RunnerInterface
             }
 
         }
+
+        $this->loaded = true;
     }
 
     private function getTestsInPath($path)
@@ -43,6 +46,7 @@ class FilesystemRunner implements RunnerInterface
         $Directory = new \RecursiveDirectoryIterator($this->basePath);
         $Iterator = new \RecursiveIteratorIterator($Directory);
         $Regex = new \RegexIterator($Iterator, '/.*\.php$/i');
+
         return $Regex;
     }
 
@@ -62,7 +66,7 @@ class FilesystemRunner implements RunnerInterface
      */
     public function getTests()
     {
-        if (0 == count($this->tests)) {
+        if (!$this->isLoaded()) {
            $this->addTests($this->getTestsInPath($this->basePath));
         }
 
@@ -77,5 +81,13 @@ class FilesystemRunner implements RunnerInterface
         foreach ($this->getTests() as $test) {
             $test->execute();
         }
+    }
+
+    /**
+     * return true if tests are loaded
+     */
+    public function isLoaded()
+    {
+        return $this->loaded;
     }
 }

@@ -31,18 +31,23 @@ class TestsCommand extends BaseCommand
         $output->writeln("<info>Running tests, might take a while</info>");
         $runner = new ConsoleRunnerDecorator(new FilesystemRunner($tests), $this->output);
 
+        if (0 == count($runner->getTests())) {
+            $this->writeError("No tests found");
+            exit(1);
+        }
+
         ob_start();
         $runner->run();
         ob_end_clean();
 
         $count = 0;
-        foreach($runner->getTests() as $test)
-        {
+        foreach($runner->getTests() as $test) {
             $result = $test->getResult();
             if ($result->getCode() > 0) {
                 $count++;
             }
         }
+
 
 
         if (0 == $count) {

@@ -55,13 +55,18 @@ class Documentation extends BaseCommand
         $output->writeln("<info>Generating documentation, might take a while</info>");
         $runner = new FilesystemRunner($tests);
 
+        if (0 == count($runner->getTests())) {
+            $this->writeError("No tests found");
+            exit(1);
+        }
+
         $settings = $this->settingsFromOptions(new Settings(), array(
             'template' => 'setTemplateFolder',
             'title' => 'setProjectTitle',
             'logo' => 'setProjectLogo'
         ), $input);
 
-
+var_dump($settings);
         $writter = Factory::getTemplateWritter($runner, $settings);
         $writter->write($outputFolder . DIRECTORY_SEPARATOR . 'index.html');
 

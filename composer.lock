@@ -1,6 +1,10 @@
 {
-    "hash": "6859165dade46fe8bc627da6f93980a7",
+    "hash": "c40721c8f09a76874508d6b15222df61",
     "packages": [
+        {
+            "package": "geshi/geshi",
+            "version": "1.0.8.10"
+        },
         {
             "package": "symfony/console",
             "version": "v2.0.12"
@@ -8,7 +12,7 @@
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "aa4efe1c0ad78f675d062ae5bf55259e36cbb939"
+            "source-reference": "50421c862022278828d1761c8abb4d6919a7da4a"
         }
     ],
     "aliases": []

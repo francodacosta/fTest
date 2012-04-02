@@ -60,9 +60,6 @@ class ConsoleRunnerDecorator implements RunnerInterface
         $tests = $this->getTests();
 
         foreach($tests as $test) {
-            $output = $this->output;
-
-            $test->configure();
             $test->execute();
             $this->writeTestInformation($test->getName(), $test->getResult());
 
