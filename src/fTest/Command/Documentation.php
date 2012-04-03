@@ -66,7 +66,6 @@ class Documentation extends BaseCommand
             'logo' => 'setProjectLogo'
         ), $input);
 
-var_dump($settings);
         $writter = Factory::getTemplateWritter($runner, $settings);
         $writter->write($outputFolder . DIRECTORY_SEPARATOR . 'index.html');
 
