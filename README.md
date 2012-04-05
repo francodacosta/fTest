@@ -6,6 +6,22 @@ The idea is to use your test code as documentation / examples on how to use your
 
 Each test is a class and echa test knows how to check if it was sucessfull or not
 
-Instalation
+Installation
+===
+
+Recommended instalation
 ------------
-php composer.phar install
+1. download bin/ftest.phar
+
+And you are done
+
+Github Instalation
+------------
+1. clone repository
+2. install composer from http://getcomposer.org (if you do not have it already) 
+3. php composer.phar install
+
+And you are done
+
+Creating tests / documentation
+====

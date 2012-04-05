@@ -2,13 +2,19 @@
 
 <project name="fTest" default="build:phar" basedir=".">
 
-	<property name="app.name" value="fTest"/>
-	<property name="app.version" value="0.1"/>
+	<taskdef classname="build.GetAppValueTask" name="getAppValue"/>
+	
+	<getAppValue method="getVersion" property="app.version" />
+	<getAppValue method="getName" property="app.name" />
+
 	<property name="author.name" value="Nuno Costa"/>
 	<property name="autor.email" value="nuno@francodacosta.com"/>
+	<property name="app.latest" value="bin/${app.name}.phar"/>
+	<property name="app.exe" value="bin/${app.name}-${app.version}.phar"/>
 	
 	<target name="build:phar" description="packages application into a phar archive">
-		<pharpackage destfile="./build/${app.name}.phar"  basedir="./" clistub="./ftest" webstub="" >
+		<mkdir dir="./bin"/>
+		<pharpackage destfile="${app.exe}"  basedir="./" clistub="./ftest" webstub="" compression="gzip">
 		  <fileset dir="./">
 		    <include name="vendor/**" />
 		    <include name="src/**" />
@@ -24,5 +30,12 @@
 		  </metadata>
 		</pharpackage>
 
+		<phingcall target="build:create:latest"/>
+		
+	</target>
+	
+	<target name="build:create:latest" description="creates the latest application file by copying the latest app.version.phar file to app.phar">
+		<delete file="${app.latest}"/>
+        <copy tofile="${app.latest}" file="${app.exe}"/>
 	</target>
 </project>
