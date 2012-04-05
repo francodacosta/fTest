@@ -23,9 +23,13 @@ class FilesystemRunner implements RunnerInterface
 
     private function addTests(\Iterator $iterator)
     {
+
+
+
         foreach($iterator as $path) {
             $className = basename($path, '.php');
-            require $path;
+
+            require_once $path;
             if (!class_exists($className)) {
                 //@todo show a message saying the file was found but no class was found
                 continue;

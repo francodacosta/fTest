@@ -17,18 +17,21 @@ class TestsCommand extends BaseCommand
     {
         $this->setName('test');
         $this->setDescription('Executes test cases');
-        $this->setDefinition(array(
-            new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located', '.'),
-        ));
+
+        parent::configure();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        parent::execute($input, $output);
         $this->output = $output;
 
         $tests = $input->getOption('tests');
 
+        $output->writeln("");
         $output->writeln("<info>Running tests, might take a while</info>");
+        $output->writeln("<info>Tests folder</info>: " . realpath($tests));
+
         $runner = new ConsoleRunnerDecorator(new FilesystemRunner($tests), $this->output);
 
         if (0 == count($runner->getTests())) {
