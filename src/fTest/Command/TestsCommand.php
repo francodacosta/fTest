@@ -27,7 +27,7 @@ class TestsCommand extends BaseCommand
         $this->output = $output;
 
         $tests = $input->getOption('tests');
-
+        $bootstrap = realpath($input->getOption('bootstrap'));
         $output->writeln("");
         $output->writeln("<info>Running tests, might take a while</info>");
         $output->writeln("<info>Tests folder</info>: " . realpath($tests));
@@ -39,6 +39,12 @@ class TestsCommand extends BaseCommand
             exit(1);
         }
 
+        if(file_exists($bootstrap)) {
+            $output->writeln('<info>Loading bootstrap file:</info> ' . $bootstrap );
+            require $bootstrap;
+        }
+
+        $output->writeln("");
         ob_start();
         $runner->run();
         ob_end_clean();

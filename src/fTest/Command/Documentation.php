@@ -39,7 +39,7 @@ class Documentation extends BaseCommand
         $this->output = $output;
         $output->writeln("<info>Generating documentation, might take a while</info>");
 
-        $outputFolder = $input->getOption('output');
+        $outputFolder = realpath($input->getOption('output'));
         $tests = $input->getOption('tests');
         if (! is_dir($outputFolder)) {
             $this->writeError('Output Folder ' . $outputFolder . " not found! have you created it ? \n\tyou can change it with --output option ");

@@ -47,16 +47,17 @@ class BaseCommand extends Command
         $defenition = $this->getDefinition();
         switch($name) {
             case 'document' :
-                $defenition->addOption(new InputOption('output', 'o', InputArgument::OPTIONAL, 'the folder where to store the documentation', './docs'));
-                $defenition->addOption(new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located', '.'));
-                $defenition->addOption(new InputOption('template', null, InputArgument::OPTIONAL, 'The root folder where template files are located'));
+                $defenition->addOption(new InputOption('output', 'o', InputArgument::OPTIONAL, 'the folder where to store the documentation', realpath('./docs')));
+                $defenition->addOption(new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located', realpath('.')));
+                $defenition->addOption(new InputOption('template', null, InputArgument::OPTIONAL, 'The root folder where template files are located', realpath('.')));
                 $defenition->addOption(new InputOption('title', null, InputArgument::OPTIONAL, 'The project title'));
                 $defenition->addOption(new InputOption('logo', null, InputArgument::OPTIONAL, 'The project logo'));
                 $defenition->addOption(new InputOption('name', null, InputArgument::OPTIONAL, 'The project name'));
                 break;
 
             case 'tests':
-                $defenition->addOption(new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located', '.'));
+                $defenition->addOption(new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located', realpath('.')));
+                $defenition->addOption(new InputOption('bootstrap', 'b', InputArgument::OPTIONAL, 'run this file before executing tests', './bootstrap.php'));
                 break;
         }
 
@@ -69,10 +70,11 @@ class BaseCommand extends Command
         register_shutdown_function(function() use ($output){
             $error = error_get_last();
             if ($error ) {
-                //throw new \Exception($error['message'], 254);
                 $message = array(
                     'Fatal Error:',
                      $error['message'],
+                     'From:',
+                     $error['file'] . ' line ' . $error['line'] ,
                 );
 
 

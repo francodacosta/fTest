@@ -6,6 +6,18 @@ class GetAppValueTask extends Task
 {
     private $property;
     private $method;
+    private $app = null;
+
+    private function getApp()
+    {
+        if (is_null($this->app)) {
+            define('NO_EXECUTE', 'a');
+            require __DIR__ . './../ftest.php';
+            $this->app = $app;
+        }
+
+        return $this->app;
+    }
 
     public function getProperty()
     {
@@ -19,8 +31,7 @@ class GetAppValueTask extends Task
 
     public function main()
     {
-        define('NO_EXECUTE', 'a');
-        require __DIR__ . './../ftest';
+        $app = $this->getApp();
 
         $this->project->setProperty($this->property, $app->{$this->method}());
     }

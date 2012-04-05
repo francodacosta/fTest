@@ -14,11 +14,11 @@
 	
 	<target name="build:phar" description="packages application into a phar archive">
 		<mkdir dir="./bin"/>
-		<pharpackage destfile="${app.exe}"  basedir="./" clistub="./ftest" webstub="" compression="gzip">
+		<pharpackage destfile="${app.exe}"  basedir="./" clistub="./ftest.php" webstub="" compression="gzip">
 		  <fileset dir="./">
 		    <include name="vendor/**" />
 		    <include name="src/**" />
-		    <include name="ftest" />
+		    <include name="ftest.php" />
 		  </fileset>
 		  <metadata>
 		    <element name="version" value="${app.version}" />
