@@ -6,8 +6,13 @@ use fTest\Application;
 use fTest\Command\Documentation;
 use fTest\Command\TestsCommand;
 
+
 $app = new Application('fTest', '0.1');
 $app->add(new documentation);
 $app->add(new TestsCommand);
 $app->setDefaultCommandName('document');
-$app->run();
+
+// only run the app if this file was executed directly
+if ( basename(__FILE__) == basename($_SERVER["SCRIPT_FILENAME"]) ) { 
+    $app->run();
+}
