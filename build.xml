@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="fTest" default="build:phar" basedir=".">
+
+	<property name="app.name" value="fTest"/>
+	<property name="app.version" value="0.1"/>
+	<property name="author.name" value="Nuno Costa"/>
+	<property name="autor.email" value="nuno@francodacosta.com"/>
+	
+	<target name="build:phar" description="packages application into a phar archive">
+		<pharpackage destfile="./build/${app.name}.phar"  basedir="./" clistub="./ftest" webstub="" >
+		  <fileset dir="./">
+		    <include name="vendor/**" />
+		    <include name="src/**" />
+		    <include name="ftest" />
+		  </fileset>
+		  <metadata>
+		    <element name="version" value="${app.version}" />
+		    <element name="authors">
+		      <element name="${author.name}">
+		        <element name="e-mail" value="${autor.email}" />
+		      </element>
+		    </element>
+		  </metadata>
+		</pharpackage>
+
+	</target>
+</project>
