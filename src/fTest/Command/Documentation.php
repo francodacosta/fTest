@@ -25,6 +25,7 @@ class Documentation extends BaseCommand
             new InputOption('template', null, InputArgument::OPTIONAL, 'The root folder where template files are located'),
             new InputOption('title', null, InputArgument::OPTIONAL, 'The project title'),
             new InputOption('logo', null, InputArgument::OPTIONAL, 'The project logo'),
+            new InputOption('name', null, InputArgument::OPTIONAL, 'The project name'),
         ));
     }
 
@@ -63,7 +64,8 @@ class Documentation extends BaseCommand
         $settings = $this->settingsFromOptions(new Settings(), array(
             'template' => 'setTemplateFolder',
             'title' => 'setProjectTitle',
-            'logo' => 'setProjectLogo'
+            'logo' => 'setProjectLogo',
+            'name' => 'setProjectName',
         ), $input);
 
         $writter = Factory::getTemplateWritter($runner, $settings);

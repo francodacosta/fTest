@@ -1,0 +1,15 @@
+{% set contactUrl = config.getContactUrl() %}
+
+<p>These are the code examples available for {{ config.getProjectName() }}</p>
+<p>Browse them, read the code, see the result of each code block, and have fun</p>
+<p>If you have questions ot suggestions
+{% if contactUrl %}
+    <a href="{{ contactUrl }}">
+{% endif %}
+
+just drop us a line
+
+{% if contactUrl %}
+    </a>
+{% endif %}
+</p>
