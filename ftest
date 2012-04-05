@@ -9,4 +9,5 @@ use fTest\Command\TestsCommand;
 $app = new Application('fTest', '0.1');
 $app->add(new documentation);
 $app->add(new TestsCommand);
+$app->setDefaultCommandName('document');
 $app->run();

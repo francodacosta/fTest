@@ -1,9 +1,9 @@
 @CHARSET "UTF-8";
 
 body {
-	background: #222;
+	background: #fff;
 	font-family: verdana, Arial, Sans;
-	color: #efefef;
+	color: #666;
 	font-size: 16px;
 }
 
@@ -13,19 +13,49 @@ div.wrapper {
 }
 
 h1 {
-	color: #fff;
-	font-size: 50px;
+	color: #000;
+	font-size: 30px;
 	font-weight: normal;
 }
 
+
+
 h2 {
-    color: #93B300;
-    font-size: 25px;
+    color: #fff;
+    font-size: 20px;
     font-weight: normal;
+    
+    height: 30px;
+    line-height: 30px;
+    
+    background: #666;
+    padding: 0 0 0 30px;
+    
+    margin-top: 30px;
+    
+    position: relative;
+}
+
+h2:BEFORE {
+    content: "";
+    background: #a3fe01;
+    display: block;
+    position: absolute;
+    
+    top: 10px;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+}
+
+h2.unstable:BEFORE {
+    background: red;
 }
 
 .syntaxhighlighter {
     display: none;
+    
+    border: 1px solid #666;
     
 }
 
@@ -41,14 +71,14 @@ div.test.results h2{
     margin-left: -20px;
 }
 
-.unstable {
-	color: red;
+span.unstable {
 	font-size: 12px;
 	padding-left: 50px;
+	font-style:italic; 
 }
 
 .codeContainer h3,
 .codeContainer h3 a {
-	color: #93B300;
 	font-size: 14px;
+	color: #666;
 }
