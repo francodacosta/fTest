@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 include __DIR__ . "/vendor/.composer/autoload.php";
 
@@ -12,7 +11,10 @@ $app->add(new documentation);
 $app->add(new TestsCommand);
 $app->setDefaultCommandName('document');
 
+
 // only run the app if this file was executed directly
-if ( basename(__FILE__) == basename($_SERVER["SCRIPT_FILENAME"]) ) { 
+if ( ! defined('NO_EXECUTE') ) { 
     $app->run();
 }
+
+
