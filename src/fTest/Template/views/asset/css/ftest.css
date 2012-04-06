@@ -1,21 +1,30 @@
 @CHARSET "UTF-8";
 
 body {
-	background: #fff;
-	font-family: verdana, Arial, Sans;
-	color: #333;
-	font-size: 16px;
+    background: #efefef;
+    font-family: verdana, Arial, Sans;
+    color: #333;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: #93B300;
+}
+
+a:hover {
+    border-bottom: 1px dashed #93B300;
 }
 
 div.wrapper {
-	width: 800px;
-	margin: auto;
+    width: 800px;
+    margin: auto;
 }
 
 h1 {
-	color: #000;
-	font-size: 30px;
-	font-weight: normal;
+    color: #000;
+    font-size: 30px;
+    font-weight: normal;
 }
 
 
@@ -55,7 +64,8 @@ h2.unstable:BEFORE {
 .syntaxhighlighter {
     display: none;
     
-    border: 1px solid #666;
+    font-family: monospace!important;
+    font-size: 12px!important;
     
 }
 
@@ -66,15 +76,15 @@ h2.unstable:BEFORE {
 
 
 span.unstable {
-	font-size: 12px;
-	padding-left: 50px;
-	font-style:italic; 
+    font-size: 12px;
+    padding-left: 50px;
+    font-style:italic; 
 }
 
 .codeContainer h3,
 .codeContainer h3 a {
-	font-size: 14px;
-	color: #666;
+    font-size: 14px;
+    color: #666;
 }
 
 div.footer {

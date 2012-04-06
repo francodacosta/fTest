@@ -72,11 +72,18 @@ class Documentation extends BaseCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $tests = $input->getOption('tests');
+        if(!$tests) {
+            $this->writeError("Must specify the tests folder");
+            echo $this->getHelp();
+            exit(253);
+        }
+
         $this->output = $output;
         $output->writeln("<info>Generating documentation, might take a while</info>");
 
         $outputFolder = realpath($input->getOption('output'));
-        $tests = $input->getOption('tests');
+
         if (! is_dir($outputFolder)) {
             $this->writeError('Output Folder ' . $outputFolder . " not found! have you created it ? \n\tyou can change it with --output option ");
             return;
@@ -103,7 +110,7 @@ class Documentation extends BaseCommand
 
         $this->copyTemplateFiles($settings->getTemplateRoot() ,$outputFolder );
         if ($settings->getTemplateFolder()) {
-            $this->copyTemplateFiles($settings->getTemplateFolder() ,$outputFolder );
+            $this->copyTemplateFiles(realpath($settings->getTemplateFolder()) ,$outputFolder );
         }
 
 

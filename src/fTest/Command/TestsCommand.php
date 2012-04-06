@@ -27,6 +27,10 @@ class TestsCommand extends BaseCommand
         $this->output = $output;
 
         $tests = $input->getOption('tests');
+        if(!$tests) {
+            throw new \UnexpectedValueException("Must specify the tests folder");
+        }
+
         $bootstrap = realpath($input->getOption('bootstrap'));
         $output->writeln("");
         $output->writeln("<info>Running tests, might take a while</info>");

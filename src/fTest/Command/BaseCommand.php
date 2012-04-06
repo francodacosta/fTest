@@ -48,7 +48,7 @@ class BaseCommand extends Command
         switch($name) {
             case 'document' :
                 $defenition->addOption(new InputOption('output', 'o', InputArgument::OPTIONAL, 'the folder where to store the documentation', './docs'));
-                $defenition->addOption(new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located', realpath('.')));
+                $defenition->addOption(new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located'));
                 $defenition->addOption(new InputOption('template', null, InputArgument::OPTIONAL, 'The root folder where template files are located', null));
                 $defenition->addOption(new InputOption('title', null, InputArgument::OPTIONAL, 'The project title'));
                 $defenition->addOption(new InputOption('logo', null, InputArgument::OPTIONAL, 'The project logo'));
@@ -56,7 +56,7 @@ class BaseCommand extends Command
                 break;
 
             case 'tests':
-                $defenition->addOption(new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located', realpath('.')));
+                $defenition->addOption(new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located'));
                 $defenition->addOption(new InputOption('bootstrap', 'b', InputArgument::OPTIONAL, 'run this file before executing tests', './bootstrap.php'));
                 break;
         }

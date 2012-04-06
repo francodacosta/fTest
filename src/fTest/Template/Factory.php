@@ -9,9 +9,8 @@ class Factory
     {
         $templatePath = __DIR__ . DIRECTORY_SEPARATOR . 'views/';
         $folders = array($templatePath);
-
-        if (strlen($userTemplateFolder) > 0) {
-           array_unshift($folders, $userTemplateFolder);
+        if (strlen(realpath($userTemplateFolder)) > 0) {
+           array_unshift($folders, realpath($userTemplateFolder));
         }
         $cachePath = false;
         $twig = new Twig($folders, $cachePath);
