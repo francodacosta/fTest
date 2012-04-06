@@ -3,12 +3,11 @@ namespace fTest\Command;
 
 use fTest\Template\Factory;
 use fTest\Template\Settings;
-
-
+use fTest\Runner\FilesystemRunner;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Finder\Finder;
 
-use fTest\Runner\FilesystemRunner;
 
 class Documentation extends BaseCommand
 {
@@ -32,6 +31,43 @@ class Documentation extends BaseCommand
         }
 
         return $settings;
+    }
+
+    /**
+     * @todo refactor this crap
+     */
+    private function copyTemplateFiles($sourceFolder, $destinationFolder) {
+
+        if ( DIRECTORY_SEPARATOR !== substr($destinationFolder, -1,1)) {
+            $destinationFolder .= DIRECTORY_SEPARATOR;
+        }
+
+        $finder = new Finder();
+
+        $iterator = $finder
+          ->directories()
+          ->name('*.*')
+          ->notName('*.twig')
+          ->in($sourceFolder);
+
+        foreach ($iterator as $folder) {
+            $path = str_replace($sourceFolder, $destinationFolder, $folder->getPathName());
+            if (! is_dir($path)) {
+                mkdir($path);
+            }
+        }
+
+
+        $iterator = $finder
+        ->files()
+        ->name('*.*')
+        ->notName('*.twig')
+        ->in($sourceFolder);
+
+        foreach ($iterator as $file) {
+            $path = str_replace($sourceFolder, $destinationFolder, $file->getPathName());
+            copy($file->getPathName(), $path );
+        }
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -63,6 +99,13 @@ class Documentation extends BaseCommand
 
         $writter = Factory::getTemplateWritter($runner, $settings);
         $writter->write($outputFolder . DIRECTORY_SEPARATOR . 'index.html');
+
+
+        $this->copyTemplateFiles($settings->getTemplateRoot() ,$outputFolder );
+        if ($settings->getTemplateFolder()) {
+            $this->copyTemplateFiles($settings->getTemplateFolder() ,$outputFolder );
+        }
+
 
         $output->writeln(sprintf("<comment>Documentation saved to %s/index.html</comment>", realpath($tests)));
     }

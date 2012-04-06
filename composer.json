@@ -2,6 +2,7 @@
     
     "require": {
         "symfony/console" : "dev-master",
+        "symfony/finder" : "dev-master",
         "twig/twig" : "dev-master"
     },
     

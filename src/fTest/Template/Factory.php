@@ -7,12 +7,14 @@ class Factory
 
     private static function createTwiginstance($userTemplateFolder)
     {
-        if (0==strlen($userTemplateFolder)) {
-            $userTemplateFolder = '.';
-        }
         $templatePath = __DIR__ . DIRECTORY_SEPARATOR . 'views/';
+        $folders = array($templatePath);
+
+        if (strlen($userTemplateFolder) > 0) {
+           array_unshift($folders, $userTemplateFolder);
+        }
         $cachePath = false;
-        $twig = new Twig(array($userTemplateFolder, $templatePath), $cachePath);
+        $twig = new Twig($folders, $cachePath);
 
         return $twig;
     }

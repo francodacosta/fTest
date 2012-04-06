@@ -47,9 +47,9 @@ class BaseCommand extends Command
         $defenition = $this->getDefinition();
         switch($name) {
             case 'document' :
-                $defenition->addOption(new InputOption('output', 'o', InputArgument::OPTIONAL, 'the folder where to store the documentation', realpath('./docs')));
+                $defenition->addOption(new InputOption('output', 'o', InputArgument::OPTIONAL, 'the folder where to store the documentation', './docs'));
                 $defenition->addOption(new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located', realpath('.')));
-                $defenition->addOption(new InputOption('template', null, InputArgument::OPTIONAL, 'The root folder where template files are located', realpath('.')));
+                $defenition->addOption(new InputOption('template', null, InputArgument::OPTIONAL, 'The root folder where template files are located', null));
                 $defenition->addOption(new InputOption('title', null, InputArgument::OPTIONAL, 'The project title'));
                 $defenition->addOption(new InputOption('logo', null, InputArgument::OPTIONAL, 'The project logo'));
                 $defenition->addOption(new InputOption('name', null, InputArgument::OPTIONAL, 'The project name'));

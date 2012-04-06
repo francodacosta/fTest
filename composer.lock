@@ -1,10 +1,15 @@
 {
-    "hash": "13bde62c57fa8cdce932907c61a1c031",
+    "hash": "61ac3d11434b605d1a3d437ff89caece",
     "packages": [
         {
             "package": "symfony/console",
             "version": "dev-master",
             "source-reference": "8e3c42aa976f18a9bfcb0694553e5f99def3309c"
+        },
+        {
+            "package": "symfony/finder",
+            "version": "dev-master",
+            "source-reference": "57ec7198a70e6c40e450ba66cc2f8ecab98746c8"
         },
         {
             "package": "twig/twig",
