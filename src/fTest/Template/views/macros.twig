@@ -1,0 +1,5 @@
+{% macro createTestLinks(tests) %}
+    {% for test in tests %}
+        {% include 'parts/testLink.html.twig' %}
+    {% endfor %}
+{% endmacro %}
