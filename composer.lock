@@ -14,7 +14,7 @@
         {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "e2220bb2826dd3eb6720fbdf5f175fb013f9b437"
+            "source-reference": "fd634d1af20fb41dd4e9f7b23806513a6a6b8110"
         }
     ],
     "aliases": []

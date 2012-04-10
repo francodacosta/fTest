@@ -11,7 +11,6 @@ $app = new Application('fTest', '0.1');
 $app->add(new documentation);
 $app->add(new TestsCommand);
 $app->add(new DefaultCommand);
-$app->setDefaultCommandName('default');
 
 
 echo sprintf("\n%s %s\n", $app->getName(), $app->getVersion());
