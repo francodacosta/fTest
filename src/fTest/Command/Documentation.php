@@ -72,6 +72,7 @@ class Documentation extends BaseCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->output = $output;
         $tests = $input->getOption('tests');
         if(!$tests) {
             $this->writeError("Must specify the tests folder");
@@ -79,7 +80,6 @@ class Documentation extends BaseCommand
             exit(253);
         }
 
-        $this->output = $output;
         $output->writeln("<info>Generating documentation, might take a while</info>");
 
         $outputFolder = realpath($input->getOption('output'));
@@ -104,8 +104,9 @@ class Documentation extends BaseCommand
             'name' => 'setProjectName',
         ), $input);
 
-        $writter = Factory::getTemplateWritter($runner, $settings);
-        $writter->write($outputFolder . DIRECTORY_SEPARATOR . 'index.html');
+        $template = Factory::getTemplate($runner, $settings, $outputFolder );
+        $template->write();
+//         $writter->write($outputFolder . DIRECTORY_SEPARATOR . 'index.html');
 
 
         $this->copyTemplateFiles($settings->getTemplateRoot() ,$outputFolder );
@@ -114,6 +115,6 @@ class Documentation extends BaseCommand
         }
 
 
-        $output->writeln(sprintf("<comment>Documentation saved to %s/index.html</comment>", realpath($tests)));
+        $output->writeln(sprintf("<comment>Documentation saved to %s/index.html</comment>", realpath($outputFolder)));
     }
 }

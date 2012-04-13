@@ -1,0 +1,26 @@
+{% set stable = (0 == test.getResult().getCode())
+   %}
+<div class="test {{ test.getName()|escape }}">
+    <a name="test.{{  test.getName() }}"></a>
+    <h2 class="{% if not stable %}unstable{% endif %}">{{ test.getTitle() }}</h2>
+     {% if not stable %}
+       <p><span class="unstable"><strong>Not stable</strong> {{ test.getResult().getCode() }}: {{ test.getResult().getMessage() }}</span></p>
+    {% endif %}
+    <p>{{ test.getDescription() }}</p>
+
+
+    {% set results = test.renderResults() %}
+    {% if results %}
+        <h3>Result:</h3>
+        {{ results|raw }}
+    {% endif %}
+
+    <div class="codeContainer">
+        <h3 class="code"><a href="#">Code:</a></h3>
+<pre class="code brush: php;">
+
+{{ test.getCode() }}
+
+</pre>
+    </div>
+</div>

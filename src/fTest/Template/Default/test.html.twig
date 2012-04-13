@@ -1,3 +1,5 @@
+{% extends 'default.html.twig' %}
+{% block test %}
 {% set stable = (0 == test.getResult().getCode())
    %}
 <div class="test {{ test.getName()|escape }}">
@@ -18,10 +20,8 @@
 
     <div class="codeContainer">
         <h3 class="code"><a href="#">Code:</a></h3>
-<pre class="code brush: php;">
-
-{{ test.getCode() }}
-
-</pre>
+        <pre class="code brush: php;">{{ test.getCode() }}</pre>
     </div>
 </div>
+
+{% endblock %}

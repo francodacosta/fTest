@@ -3,3 +3,7 @@
         {% include 'parts/testLink.html.twig' %}
     {% endfor %}
 {% endmacro %}
+
+{% macro generateUrl(name) %}
+    {{ name|replace({' ':'_'}) }}.html
+{% endmacro %}

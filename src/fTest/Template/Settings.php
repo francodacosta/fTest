@@ -50,7 +50,7 @@ class Settings
 
     public function getTemplateRoot()
     {
-        return __DIR__ . '/views/';
+        return __DIR__ . '/Default/';
     }
 
     public function getMyUrl()

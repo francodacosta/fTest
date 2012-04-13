@@ -7,7 +7,7 @@ class Factory
 
     private static function createTwiginstance($userTemplateFolder)
     {
-        $templatePath = __DIR__ . DIRECTORY_SEPARATOR . 'views/';
+        $templatePath = __DIR__ . DIRECTORY_SEPARATOR . 'Default/';
         $folders = array($templatePath);
         if (strlen(realpath($userTemplateFolder)) > 0) {
            array_unshift($folders, realpath($userTemplateFolder));
@@ -18,14 +18,15 @@ class Factory
         return $twig;
     }
 
-    public static function getTemplateWritter($runner, Settings $config)
+    public static function getTemplate($runner, Settings $settings, $baseFolder)
     {
         if (is_null(self::$template)) {
-            $template = new Writter( self::createTwigInstance($config->getTemplateFolder()));
-            $template->setRunner($runner);
-            $template->setSettings($config);
+            $writter = new Writter($baseFolder);
+            $twig =  self::createTwigInstance($settings->getTemplateFolder());
 
-            self::$template = $template;
+
+
+            self::$template = new Template($writter, $twig, $runner, $settings);
         }
 
         return self::$template;

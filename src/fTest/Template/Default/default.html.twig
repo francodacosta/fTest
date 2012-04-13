@@ -8,7 +8,7 @@
         {% endblock %}
 
         {% block css %}
-            <link rel="stylesheet" href="./asset/js/syntaxhighlighter_3.0.83/styles/shCore.css" />
+            <link rel="stylesheet" href="./asset/css/shCore.css" />
             <link rel="stylesheet" href="./asset/js/syntaxhighlighter_3.0.83/styles/shThemeDefault.css" />
             <link rel="stylesheet" href="./asset/css/ftest.css" />
         {% endblock %}
@@ -29,9 +29,13 @@
                 {% include 'pageIntro.html.twig' %}
             {% endblock %}
 
-            {% for test in tests %}
-            	{% include 'testItem.html.twig' with {'test' : test} %}
-            {% endfor %}
+            <div class="left">
+                {% include 'navigation.html.twig' with {'tests':tests} %}
+            </div>
+
+            <div class="content">
+                {% block test %}{% endblock %}
+            </div>
 
             {% block javascript %}
                 <script type="text/javascript" src="./asset/js/ext-core-debug.js"></script>

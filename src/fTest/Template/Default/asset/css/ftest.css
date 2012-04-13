@@ -1,10 +1,22 @@
 @CHARSET "UTF-8";
 
 body {
-    background: #efefef;
+    background: #fff;
     font-family: verdana, Arial, Sans;
     color: #333;
     font-size: 16px;
+    padding: 20px;
+}
+
+div.left {
+    float: left;
+    width: 200px;
+}
+
+div.content {
+    float: left;
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -17,35 +29,32 @@ a:hover {
 }
 
 div.wrapper {
-    width: 800px;
+    width: 80%;
     margin: auto;
 }
 
 h1 {
-    color: #000;
-    font-size: 30px;
-    font-weight: normal;
+    color: #fff;
+    background: #000;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 0 5px 20px;
 }
 
 
 
 h2 {
-    color: #fff;
+    color: #000;
     font-size: 20px;
     font-weight: normal;
     
     height: 30px;
     line-height: 30px;
     
-    background: #000;
-    padding: 0 0 0 30px;
-    
-    margin-top: 30px;
-    
     position: relative;
 }
 
-h2:BEFORE {
+h/* 2:BEFORE {
     content: "";
     background: #a3fe01;
     display: block;
@@ -55,24 +64,29 @@ h2:BEFORE {
     left: 10px;
     width: 10px;
     height: 10px;
-}
+} */
 
 h2.unstable:BEFORE {
     background: red;
 }
 
 .syntaxhighlighter {
-    display: none;
+    /* display: none; */
     
     font-family: monospace!important;
     font-size: 12px!important;
-    
+    overflow: visible!important;
 }
 
-.codeContainer .expanded {
+.syntaxhighlighter table td.code,
+.syntaxhighlighter table {
+  width: 90% !important;
+}
+
+/* .codeContainer .expanded {
     display: block;
 }
-
+ */
 
 
 span.unstable {
@@ -88,6 +102,7 @@ span.unstable {
 }
 
 div.footer {
+    clear: both;
     margin-top: 30px;
     border-top: 1px dotted #333;
     font-size: 12px;
@@ -95,4 +110,24 @@ div.footer {
 
 a.fTest {
     color: #93B300;
+}
+
+ul.navigation h2 {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+ul.navigation {
+    list-style-type: none;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+}
+
+
+div.test {
+    padding: 0;
+    margin: 0;
 }
