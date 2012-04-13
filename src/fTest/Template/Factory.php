@@ -9,12 +9,11 @@ class Factory
     {
         $templatePath = __DIR__ . DIRECTORY_SEPARATOR . 'Default/';
         $folders = array($templatePath);
-        if (strlen(realpath($userTemplateFolder)) > 0) {
+        if (strlen($userTemplateFolder) > 0) {
            array_unshift($folders, realpath($userTemplateFolder));
         }
         $cachePath = false;
         $twig = new Twig($folders, $cachePath);
-
         return $twig;
     }
 

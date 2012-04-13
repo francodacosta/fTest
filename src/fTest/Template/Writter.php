@@ -13,6 +13,11 @@ class Writter
     {
         $this->basePath = realpath($basePath);
     }
+
+    public function getBasePath()
+    {
+        return $this->basePath;
+    }
     public function write($file, $content)
     {
 //         $twig = $this->twig->getTwig();

@@ -1,5 +1,6 @@
 <?php
 namespace fTest\Template;
+
 class Twig
 {
     private $templateFolder;
@@ -29,6 +30,7 @@ class Twig
     }
 
 
+
     public function getTwig()
     {
         if (is_null(self::$twig)) {
@@ -36,6 +38,9 @@ class Twig
             $twig = new \Twig_Environment($loader, array(
                     'cache' => $this->getCacheFolder(),
             ));
+
+
+
             self::$twig = $twig;
         }
 

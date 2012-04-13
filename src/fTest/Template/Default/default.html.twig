@@ -8,10 +8,18 @@
         {% endblock %}
 
         {% block css %}
-            <link rel="stylesheet" href="./asset/js/syntaxhighlighter_3.0.83/styles/shCore.css" />
-            <link rel="stylesheet" href="./asset/js/syntaxhighlighter_3.0.83/styles/shThemeDefault.css" />
-            <link rel="stylesheet" href="./asset/css/ftest.css" />
+            <link rel="stylesheet" href="{{ config.getTemplateRoot() }}/asset/js/syntaxhighlighter_3.0.83/styles/shCore.css" />
+            <link rel="stylesheet" href="asset/js/syntaxhighlighter_3.0.83/styles/shThemeDefault.css" />
+            <link rel="stylesheet" href="asset/css/ftest.css" />
         {% endblock %}
+
+        {% stylesheets
+            'asset/css/ftest.css'
+            filter=''
+            output='css/all.css'
+        %}
+            <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+        {% endstylesheets %}
 
     </head>
     <body>

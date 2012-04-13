@@ -11,6 +11,7 @@ vendor/monolog/
 vendor/symfony/
 vendor/twig/
 vendor/.composer
+vendor/kriswallsmith
 
 #internal files
 data/
