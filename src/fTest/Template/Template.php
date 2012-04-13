@@ -31,7 +31,7 @@ class Template
         $tests = $this->runner->getTests();
 
         // write index
-        $content = $twig->render('default.html.twig', array('tests' => $tests, 'config' => $this->settings));
+        $content = $twig->render('index.html.twig', array('tests' => $tests, 'config' => $this->settings));
         $writter->write('index.html', $content);
 
         // write tests
