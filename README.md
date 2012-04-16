@@ -15,13 +15,15 @@ Installation
 ================================================================================
 
 Recommended instalation
---------------------------------------------------------------------------------
+------------------------
+
 1. download bin/ftest.phar
 
 And you are done
 
 Github Instalation
---------------------------------------------------------------------------------
+------------------
+
 1. clone repository
 2. install composer from http://getcomposer.org (if you do not have it already) 
 3. php composer.phar install
@@ -46,7 +48,7 @@ Creating tests / documentation
   If you use this class you only need to implement the configure(), test(), and optionaly the checkTestResult()
   
 Example test:
---------------------------------------------------------------------------------
+--------------
 
 ```php
 <?php
