@@ -1,5 +1,5 @@
 {
-    "hash": "f071bd5588c99a03248973de6ee36a64",
+    "hash": "61ac3d11434b605d1a3d437ff89caece",
     "packages": [
         {
             "package": "kriswallsmith/assetic",
@@ -27,5 +27,6 @@
             "source-reference": "4e28408ce1fced95251e5f8c8299aa43e9f40f4d"
         }
     ],
+    "packages-dev": null,
     "aliases": []
 }
