@@ -10,7 +10,7 @@ class DefaultCommand extends BaseCommand
 {
     public function configure()
     {
-        $this->setName('default');
+        $this->setName('doctest');
         $this->setDescription('Executes test and creates documentation');
 
         parent::configure();

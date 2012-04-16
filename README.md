@@ -1,5 +1,5 @@
 fTest
-=================
+================================================================================
 fTest is a small and pratical framework to help you create functional tests and documentation for your project
 
 The idea is to use your test code as documentation / examples on how to use your code
@@ -10,40 +10,43 @@ The idea behind it was to have a framework to write code samples for my side pro
 As I'm writting code samples I needed an automated way to check if the code still works after some change
 fTest was born as a way to do functional tests at the same time I wrote documentation for the users
 
+
 Installation
-===
+================================================================================
 
 Recommended instalation
-------------
+--------------------------------------------------------------------------------
 1. download bin/ftest.phar
 
 And you are done
 
 Github Instalation
-------------
+--------------------------------------------------------------------------------
 1. clone repository
 2. install composer from http://getcomposer.org (if you do not have it already) 
 3. php composer.phar install
 
 And you are done
 
+
 Running fTest
-=====
+================================================================================
 * ```php fTest.phar document -t <tests folder>``` _will generate the html documentation_
 
 * ```php fTest.phar test -t <tests folder>``` _will run the tests_
 
 * ```php fTest.phar testdoc -t <tests folder>``` _run the tests and creates documentation_
 
-Creating tests / documentation
-====
 
-* tests need to implement ```fTest\Test\TestInterface```
-* for convenience there is an abstract class that takes care of most of the work
-  it is called fTest\Test\AbstractTest
+Creating tests / documentation
+================================================================================
+
+* Tests need to implement ```fTest\Test\TestInterface``` Interface
+* For convenience an abstract class was created, it that takes care of most of the work and it is wisely named ```fTest\Test\AbstractTest```
   If you use this class you only need to implement the configure(), test(), and optionaly the checkTestResult()
   
-  Example test:
+Example test:
+--------------------------------------------------------------------------------
 
 ```php
 <?php
@@ -94,6 +97,6 @@ class Porportional extends AbstractTest
 
 
 TO DO:
-====
+================================================================================
 * get title, description and name from docbloc
 * implement assetic for asset management ?
