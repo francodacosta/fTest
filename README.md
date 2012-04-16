@@ -27,16 +27,26 @@ Github Instalation
 
 And you are done
 
+Running fTest
+=====
+* ```php fTest.phar document -t <tests folder>``` _will generate the html documentation_
+
+* ```php fTest.phar test -t <tests folder>``` _will run the tests_
+
+* ```php fTest.phar testdoc -t <tests folder>``` _run the tests and creates documentation_
+
 Creating tests / documentation
 ====
 
-* tests need to implement fTest\Test\TestInterface
+* tests need to implement ```fTest\Test\TestInterface```
 * for convenience there is an abstract class that takes care of most of the work
   it is called fTest\Test\AbstractTest
   If you use this class you only need to implement the configure(), test(), and optionaly the checkTestResult()
   
   Example test:
-```
+
+```php
+<?php
 use fTest\Test\AbstractTest;
 use fTest\Test\Result\Success;
 use fTest\Test\Result\Failure;
@@ -81,3 +91,9 @@ class Porportional extends AbstractTest
 
 }
 ```
+
+
+TO DO:
+====
+* get title, description and name from docbloc
+* implement assetic for asset management ?
