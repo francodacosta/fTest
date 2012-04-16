@@ -65,8 +65,8 @@ class Porportional extends AbstractTest
      * You can configure your test using DocBlock.
      * 
      * You can use the following convention:
-     *   * _short description_ : test title
-     *   * _long description_ : test description
+     *   * short description : test title
+     *   * long description : test description
      *   * class name : test name
      */
     public function test()
