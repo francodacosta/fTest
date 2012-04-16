@@ -8,18 +8,11 @@
         {% endblock %}
 
         {% block css %}
-            <link rel="stylesheet" href="{{ config.getTemplateRoot() }}/asset/js/syntaxhighlighter_3.0.83/styles/shCore.css" />
-            <link rel="stylesheet" href="asset/js/syntaxhighlighter_3.0.83/styles/shThemeDefault.css" />
-            <link rel="stylesheet" href="asset/css/ftest.css" />
+{#             <link rel="stylesheet" href="{{ config.getTemplateRoot() }}/asset/js/syntaxhighlighter_3.0.83/styles/shCore.css" />#}
+{#             <link rel="stylesheet" href="asset/js/syntaxhighlighter_3.0.83/styles/shThemeDefault.css" />#}
+{#             <link rel="stylesheet" href="asset/css/ftest.css" />#}
+                <link rel="stylesheet" href="asset/css/ftest-min.css"
         {% endblock %}
-
-        {% stylesheets
-            'asset/css/ftest.css'
-            filter=''
-            output='css/all.css'
-        %}
-            <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
-        {% endstylesheets %}
 
     </head>
     <body>
@@ -47,10 +40,11 @@
                 </div>
             </div>
             {% block javascript %}
-                <script type="text/javascript" src="./asset/js/ext-core-debug.js"></script>
-                <script src="./asset/js/syntaxhighlighter_3.0.83/scripts/shCore.js" type="text/javascript"></script>
-                <script src="./asset/js/syntaxhighlighter_3.0.83/scripts/shBrushPhp.js" type="text/javascript"></script>
-                <script type="text/javascript" src="./asset/js/ftest.js"></script>
+{#                 <script type="text/javascript" src="./asset/js/ext-core-debug.js"></script>#}
+{#                 <script type="text/javascript" src="./asset/js/syntaxhighlighter_3.0.83/scripts/shCore.js"></script>#}
+{#                 <script type="text/javascript" src="./asset/js/syntaxhighlighter_3.0.83/scripts/shBrushPhp.js"></script>#}
+{#                 <script type="text/javascript" src="./asset/js/ftest.js"></script>#}
+                    <script type="text/javascript" src="./asset/js/ftest-all-min.js"></script>
             {% endblock %}
 
             <div class="footer">

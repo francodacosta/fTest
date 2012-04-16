@@ -12,7 +12,55 @@
 	<property name="app.latest" value="bin/${app.name}.phar"/>
 	<property name="app.exe" value="bin/${app.name}-${app.version}.phar"/>
 	
-	<target name="build:phar" description="packages application into a phar archive">
+	<property name="app.js.folder" value="${project.basedir}/src/fTest/Template/Default/asset/js"/>
+	<property name="app.css.folder" value="${project.basedir}/src/fTest/Template/Default/asset/css"/>
+	
+	<target name="css:minimize" description="concat css files">
+	        
+	        <delete file="${app.css.folder}/ftest-min.css" />
+	        
+	        <append destFile="${app.css.folder}/ftest-min.css">
+	            <fileset dir="${app.js.folder}">
+	            	<include name="syntaxhighlighter_3.0.83/styles/shCore.css" />
+                    <include name="syntaxhighlighter_3.0.83/styles/shThemeDefault.css" />
+	            </fileset>
+	            <fileset dir="${app.css.folder}">
+	                <include name="ftest.css" />
+	            </fileset>
+	        </append>
+	        
+	        <!-- removing temp files -->
+	        
+    </target>
+	
+	<target name="js:minimize" description="concat and minify js files">
+		
+		<delete file="${app.js.folder}/ftest-all-min.js" />
+		
+		 <jsMin targetDir="${app.js.folder}" suffix="-min" failOnError = "true">
+            <fileset dir="${app.js.folder}">
+                    <include name="**/ftest.js"/>
+            </fileset>
+        </jsMin>
+		
+		<append destFile="${app.js.folder}/ftest-all-min.js">
+    		<fileset dir="${app.js.folder}">
+                <include name="ext-core.js" />
+                <include name="syntaxhighlighter_3.0.83/scripts/shCore.js" />
+                <include name="syntaxhighlighter_3.0.83/scripts/shBrushPhp.js" />
+                <include name="ftest-min.js" />
+		    </fileset>
+		</append>
+		
+		<!-- removing temp files -->
+		<delete file="${app.js.folder}/ftest-min.js" />
+		
+	</target>
+		
+	<target 
+		name="build:phar" 
+		description="packages application into a phar archive"
+		>
 		<mkdir dir="./bin"/>
 		<pharpackage destfile="${app.exe}"  basedir="./" clistub="./ftest.php" webstub="" compression="gzip">
 		  <fileset dir="./">

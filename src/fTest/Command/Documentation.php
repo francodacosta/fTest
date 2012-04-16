@@ -109,10 +109,10 @@ class Documentation extends BaseCommand
 //         $writter->write($outputFolder . DIRECTORY_SEPARATOR . 'index.html');
 
 
-//         $this->copyTemplateFiles($settings->getTemplateRoot() ,$outputFolder );
-//         if ($settings->getTemplateFolder()) {
-//             $this->copyTemplateFiles(realpath($settings->getTemplateFolder()) ,$outputFolder );
-//         }
+        $this->copyTemplateFiles($settings->getTemplateRoot() ,$outputFolder );
+        if ($settings->getTemplateFolder()) {
+            $this->copyTemplateFiles(realpath($settings->getTemplateFolder()) ,$outputFolder );
+        }
 
 
         $output->writeln(sprintf("<comment>Documentation saved to %s/index.html</comment>", realpath($outputFolder)));

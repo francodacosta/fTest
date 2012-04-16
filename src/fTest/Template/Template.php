@@ -2,15 +2,15 @@
 namespace fTest\Template;
 
 use fTest\Runner\RunnerInterface;
-use Assetic\AssetWriter;
-use Assetic\Extension\Twig\TwigFormulaLoader;
-use Assetic\Extension\Twig\TwigResource;
-use Assetic\Factory\LazyAssetManager;
-use Assetic\Extension\Twig\AsseticExtension;
-use Assetic\Factory\AssetFactory;
+// use Assetic\AssetWriter;
+// use Assetic\Extension\Twig\TwigFormulaLoader;
+// use Assetic\Extension\Twig\TwigResource;
+// use Assetic\Factory\LazyAssetManager;
+// use Assetic\Extension\Twig\AsseticExtension;
+// use Assetic\Factory\AssetFactory;
 
-use Assetic\FilterManager;
-use Assetic\Filter\Yui;
+// use Assetic\FilterManager;
+// use Assetic\Filter\Yui;
 use Symfony\Component\Finder\Finder;
 
 
@@ -51,8 +51,8 @@ class Template
 
 
         $twig = $this->twig->getTwig();
-        $factory = $this->getAssetic();
-        $twig->addExtension(new AsseticExtension($factory));
+//         $factory = $this->getAssetic();
+//         $twig->addExtension(new AsseticExtension($factory));
         $writter = $this->writter;
         $tests = $this->runner->getTests();
 
@@ -74,28 +74,28 @@ class Template
         }
 
 
-        $am = new LazyAssetManager($factory);
+//         $am = new LazyAssetManager($factory);
 
-        // enable loading assets from twig templates
-        $twigLoader = new TwigFormulaLoader($twig);
-        $am->setLoader('twig', $twigLoader);
+//         // enable loading assets from twig templates
+//         $twigLoader = new TwigFormulaLoader($twig);
+//         $am->setLoader('twig', $twigLoader);
 
-        $finder = new Finder();
+//         $finder = new Finder();
 
-        $iterator = $finder
-        ->files()
-        ->name('*.twig')
-        ->in($twig->getLoader()->getPaths());
+//         $iterator = $finder
+//         ->files()
+//         ->name('*.twig')
+//         ->in($twig->getLoader()->getPaths());
 
-        // loop through all your templates
-        foreach ($iterator as $template) {
-            $resource = new TwigResource($twig->getLoader(), $template->getFilename());
-            $am->addResource($resource, 'twig');
-        }
+//         // loop through all your templates
+//         foreach ($iterator as $template) {
+//             $resource = new TwigResource($twig->getLoader(), $template->getFilename());
+//             $am->addResource($resource, 'twig');
+//         }
 
 
-        $writer = new AssetWriter($writter->getBasePath());
+//         $writer = new AssetWriter($writter->getBasePath());
 
-        $writer->writeManagerAssets($am);
+//         $writer->writeManagerAssets($am);
     }
 }
