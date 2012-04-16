@@ -47,8 +47,8 @@ Creating tests / documentation
 * For convenience an abstract class was created, it that takes care of most of the work and it is wisely named ```fTest\Test\AbstractTest```
   If you use this class you only need to implement the configure(), test(), and optionaly the checkTestResult()
   
-Example test (docblock):
---------------
+_Example test:_
+
 ```php
 <?php
 use fTest\Test\AbstractTest;
@@ -62,7 +62,10 @@ class Porportional extends AbstractTest
 
    
     /**
-     * You can configure your test using DocBlock.
+     * You can configure your test using DocBlock or manually inside the configure() function.
+     * 
+     * here is where we set test name, description, etc..
+     * this will be used when generating the code samples for your projec
      * 
      * You can use the following convention:
      *   * short description : test title
@@ -78,35 +81,9 @@ class Porportional extends AbstractTest
 
         $phMagick->run($resizeAction);
     }
-
+    
     /**
-     * if you also run tests this function will return the status of the test
-     * if you do not define it the test will be marked as not checked (failed!)
-     */
-    public function checkTestResult()
-    {
-        return file_exists($this->newFile) ? new Success: new Failure;
-    }
-
-}
-```
-Example test (non docblock):
---------------
-
-```php
-<?php
-use fTest\Test\AbstractTest;
-use fTest\Test\Result\Success;
-use fTest\Test\Result\Failure;
-
-class Porportional extends AbstractTest
-{
-    private $originalFile = 'data/500px-Kiwi_aka.jpg';
-    private $newFile =  'results/resize_100_100.jpg';
-
-    /**
-     * here is where we set test name, description, etc..
-     * this will be used when generating the code samples for your project
+     * If you do not use DocBlock this is how you can configure your test here
      */
     public function configure()
     {
@@ -115,18 +92,6 @@ class Porportional extends AbstractTest
         $this->setDescription("Resizes an image maintaining aspect ratio");
     }
 
-    /**
-     * here is where we set the test code, this code will be used as a sample
-     */
-    public function test()
-    {
-        $phMagick = new \phMagick\Core\Runner();
-
-        $resizeAction = new \phMagick\Action\Resize\Proportional($this->originalFile, $this->newFile);
-        $resizeAction->setWidth(100);
-
-        $phMagick->run($resizeAction);
-    }
 
     /**
      * if you also run tests this function will return the status of the test
@@ -138,7 +103,7 @@ class Porportional extends AbstractTest
     }
 
 }
-```
+
 
 
 TO DO:
