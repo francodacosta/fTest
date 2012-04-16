@@ -2,7 +2,7 @@
 namespace fTest\Test;
 use fTest\Test\Result\Failure;
 use fTest\Test\Result\Skipped;
-
+use DocBlock\DocBlock;
 abstract class AbstractTest implements TestInterface
 {
     private $title = null;
@@ -14,7 +14,18 @@ abstract class AbstractTest implements TestInterface
      * (non-PHPdoc)
      * @see fTest.TestInterface::configure()
      */
-    abstract public function configure();
+    public function configure()
+    {
+        $r = new \ReflectionMethod(get_class($this), 'test');
+        $comment = $r->getDocComment();
+
+        $doc = new DocBlock($comment);
+
+        $this->setTitle($doc->getShortDescription());
+        $this->setDescription($doc->getLongDescription());
+        $this->setName(get_class($this));
+
+    }
 
     /**
      * (non-PHPdoc)

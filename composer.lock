@@ -1,11 +1,6 @@
 {
-    "hash": "61ac3d11434b605d1a3d437ff89caece",
+    "hash": "ad24199b5aa829657ed223907bc90610",
     "packages": [
-        {
-            "package": "kriswallsmith/assetic",
-            "version": "dev-master",
-            "source-reference": "eb3b5eb732e5f172d5aa12dea0af36b7989c18b3"
-        },
         {
             "package": "symfony/console",
             "version": "dev-master",
@@ -17,14 +12,9 @@
             "source-reference": "57ec7198a70e6c40e450ba66cc2f8ecab98746c8"
         },
         {
-            "package": "symfony/process",
-            "version": "dev-master",
-            "source-reference": "2e4da8c8076744bafed97451bb1574c96cda0e68"
-        },
-        {
             "package": "twig/twig",
             "version": "dev-master",
-            "source-reference": "4e28408ce1fced95251e5f8c8299aa43e9f40f4d"
+            "source-reference": "5799a889c03e38a2c6d0b475194ab8c0b8904487"
         }
     ],
     "packages-dev": null,
