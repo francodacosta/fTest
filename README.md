@@ -47,7 +47,50 @@ Creating tests / documentation
 * For convenience an abstract class was created, it that takes care of most of the work and it is wisely named ```fTest\Test\AbstractTest```
   If you use this class you only need to implement the configure(), test(), and optionaly the checkTestResult()
   
-Example test:
+Example test (docblock):
+--------------
+```php
+<?php
+use fTest\Test\AbstractTest;
+use fTest\Test\Result\Success;
+use fTest\Test\Result\Failure;
+
+class Porportional extends AbstractTest
+{
+    private $originalFile = 'data/500px-Kiwi_aka.jpg';
+    private $newFile =  'results/resize_100_100.jpg';
+
+   
+    /**
+     * You can configure your test using DocBlock.
+     * 
+     * You can use the following convention:
+     *   * _short description_ : test title
+     *   * _long description_ : test description
+     *   * class name : test name
+     */
+    public function test()
+    {
+        $phMagick = new \phMagick\Core\Runner();
+
+        $resizeAction = new \phMagick\Action\Resize\Proportional($this->originalFile, $this->newFile);
+        $resizeAction->setWidth(100);
+
+        $phMagick->run($resizeAction);
+    }
+
+    /**
+     * if you also run tests this function will return the status of the test
+     * if you do not define it the test will be marked as not checked (failed!)
+     */
+    public function checkTestResult()
+    {
+        return file_exists($this->newFile) ? new Success: new Failure;
+    }
+
+}
+```
+Example test (non docblock):
 --------------
 
 ```php
