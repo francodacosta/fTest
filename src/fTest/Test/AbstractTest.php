@@ -2,7 +2,8 @@
 namespace fTest\Test;
 use fTest\Test\Result\Failure;
 use fTest\Test\Result\Skipped;
-use DocBlock\DocBlock;
+use francodacosta\DocBlock\DocBlock;
+
 abstract class AbstractTest implements TestInterface
 {
     private $title = null;
