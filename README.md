@@ -33,11 +33,12 @@ And you are done
 
 Running fTest
 ================================================================================
+
 * ```php fTest.phar document -t <tests folder>``` _will generate the html documentation_
 
 * ```php fTest.phar test -t <tests folder>``` _will run the tests_
 
-* ```php fTest.phar testdoc -t <tests folder>``` _run the tests and creates documentation_
+* ```php fTest.phar testdoc -t <tests folder>``` _will run the tests and creates documentation_
 
 
 Creating tests / documentation
@@ -105,9 +106,16 @@ class Porportional extends AbstractTest
 
 }
 
+Templates:
+================================================================================
+You can customise the default template anyway you want, we use twig for templates.
+you can use create your own template and use the ```--template``` parameter to tell
+fTest where you stored it.
+
+Just explore ```src/fTest/Template/Default``` folder to see what to do
 
 
 TO DO:
 ================================================================================
-* get title, description and name from docbloc
-* implement assetic for asset management ?
+
+*  implement assetic for asset management ?
