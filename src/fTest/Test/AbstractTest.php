@@ -30,6 +30,8 @@ abstract class AbstractTest implements TestInterface
 
     private function normalizeLongDescription($desc)
     {
+
+        return ($desc);
         // mantain .\n
         $desc = str_replace(".\n", ".#@#", $desc);
 

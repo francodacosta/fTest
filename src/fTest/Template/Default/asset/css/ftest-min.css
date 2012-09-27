@@ -481,4 +481,5 @@ div.test {
 
 div.test p.description {
 	width: 800px;
+	white-space: pre;
 }

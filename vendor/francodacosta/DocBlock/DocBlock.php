@@ -46,6 +46,7 @@ class DocBlock
         $tags = array();
         foreach($commentLines as $line) {
             $normalLine = preg_replace('/^.*\*/', '', $line);
+
             // is this a tag
             if (1 == preg_match('/@.* /', $normalLine)) {
                 $tags[] = $normalLine;
