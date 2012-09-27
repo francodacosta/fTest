@@ -2,9 +2,9 @@ fTest
 ================================================================================
 fTest is a small and pratical framework to help you create functional tests and documentation for your project
 
-The idea is to use your test code as documentation / examples on how to use your code
+The idea is to use your functional test code as documentation / examples on how to use your code
 
-Each test is a class and echa test knows how to check if it was sucessfull or not
+Each test is a class and each test knows how to check if it was sucessfull or not
 
 The idea behind it was to have a framework to write code samples for my side project phMagick
 As I'm writting code samples I needed an automated way to check if the code still works after some change
