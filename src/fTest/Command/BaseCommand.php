@@ -31,11 +31,11 @@ class BaseCommand extends Command
                 $this->setCliOptions('document');
                 break;
 
-            case 'tests' :
+            case 'test' :
                 $this->setCliOptions('tests');
                 break;
 
-            case 'default':
+            case 'doctest':
                 $this->setCliOptions('document');
                 $this->setCliOptions('tests');
                 break;
@@ -53,11 +53,12 @@ class BaseCommand extends Command
                 $defenition->addOption(new InputOption('title', null, InputArgument::OPTIONAL, 'The project title'));
                 $defenition->addOption(new InputOption('logo', null, InputArgument::OPTIONAL, 'The project logo'));
                 $defenition->addOption(new InputOption('name', null, InputArgument::OPTIONAL, 'The project name'));
+                $defenition->addOption(new InputOption('bootstrap', 'b', InputArgument::OPTIONAL, 'run this file to setup your environment (auto loaders, etc...)', './bootstrap.php'));
                 break;
 
             case 'tests':
                 $defenition->addOption(new InputOption('tests', 't', InputArgument::OPTIONAL, 'The root folder where all tests are located'));
-                $defenition->addOption(new InputOption('bootstrap', 'b', InputArgument::OPTIONAL, 'run this file before executing tests', './bootstrap.php'));
+                $defenition->addOption(new InputOption('bootstrap', 'b', InputArgument::OPTIONAL, 'run this file to setup your environment (auto loaders, etc...)', './bootstrap.php'));
                 break;
         }
 

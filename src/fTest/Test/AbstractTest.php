@@ -23,8 +23,22 @@ abstract class AbstractTest implements TestInterface
         $doc = new DocBlock($comment);
 
         $this->setTitle($doc->getShortDescription());
-        $this->setDescription($doc->getLongDescription());
+        $this->setDescription($this->normalizeLongDescription($doc->getLongDescription()));
         $this->setName(get_class($this));
+
+    }
+
+    private function normalizeLongDescription($desc)
+    {
+        // mantain .\n
+        $desc = str_replace(".\n", ".#@#", $desc);
+
+        // remove other \n
+        $desc = str_replace("\n", ' ', $desc);
+
+        $desc = str_replace('#@#', "\n", $desc);
+
+        return $desc;
 
     }
 
@@ -112,7 +126,7 @@ abstract class AbstractTest implements TestInterface
      */
     public function getResult()
     {
-        if( ! $this->result instanceof \fTest\Test\Result\ResultInterface) {
+        if (! $this->result instanceof \fTest\Test\Result\ResultInterface) {
             $this->result = $this->checkTestResult();
         }
 

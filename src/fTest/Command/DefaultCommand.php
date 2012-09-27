@@ -27,7 +27,7 @@ class DefaultCommand extends BaseCommand
 
         );
 
-        foreach($commands as $command) {
+        foreach ($commands as $command) {
             $command->execute($input, $output);
         }
     }

@@ -89,6 +89,11 @@ class Documentation extends BaseCommand
             return;
         }
 
+        $bootstrap = realpath($input->getOption('bootstrap'));
+        if(file_exists($bootstrap)) {
+            $output->writeln('<info>Loading bootstrap file:</info> ' . $bootstrap );
+            require $bootstrap;
+        }
 
         $runner = new FilesystemRunner($tests);
 
@@ -109,6 +114,7 @@ class Documentation extends BaseCommand
 //         $writter->write($outputFolder . DIRECTORY_SEPARATOR . 'index.html');
 
 
+        $output->writeln('<info>copying template asset files</info> ' . $bootstrap );
         $this->copyTemplateFiles($settings->getTemplateRoot() ,$outputFolder );
         if ($settings->getTemplateFolder()) {
             $this->copyTemplateFiles(realpath($settings->getTemplateFolder()) ,$outputFolder );

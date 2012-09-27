@@ -27,7 +27,7 @@ class TestsCommand extends BaseCommand
         $this->output = $output;
 
         $tests = $input->getOption('tests');
-        if(!$tests) {
+        if (!$tests) {
             throw new \UnexpectedValueException("Must specify the tests folder");
         }
 
@@ -43,8 +43,8 @@ class TestsCommand extends BaseCommand
             exit(1);
         }
 
-        if(file_exists($bootstrap)) {
-            $output->writeln('<info>Loading bootstrap file:</info> ' . $bootstrap );
+        if (file_exists($bootstrap)) {
+            $output->writeln('<info>Loading bootstrap file:</info> ' . $bootstrap);
             require $bootstrap;
         }
 
@@ -54,7 +54,7 @@ class TestsCommand extends BaseCommand
         ob_end_clean();
 
         $count = 0;
-        foreach($runner->getTests() as $test) {
+        foreach ($runner->getTests() as $test) {
             $result = $test->getResult();
             if ($result->getCode() > 0) {
                 $count++;
