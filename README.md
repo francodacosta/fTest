@@ -119,3 +119,4 @@ TO DO:
 ================================================================================
 
 *  implement assetic for asset management ?
+*  fix bug with test status in documentation so it can be added to the docs again (currently we do not get test information from the test command into the doc commnad)

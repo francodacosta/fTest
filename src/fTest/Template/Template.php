@@ -42,7 +42,8 @@ class Template
 
         return $factory;
     }
-    private function writeTests(){
+    private function writeTests()
+    {
 
     }
 
@@ -66,7 +67,7 @@ class Template
 
         // write tests
 
-        foreach($tests as $test) {
+        foreach ($tests as $test) {
             $content = $twig->render('test.html.twig', array('tests' => $tests,'test' => $test, 'config' => $this->settings));
             $file = str_replace(' ', '_', $test->getName()) . '.html';
             $writter->write($file, $content);

@@ -23,7 +23,7 @@ class Documentation extends BaseCommand
 
     private function settingsFromOptions(Settings $settings, array $options, InputInterface $input)
     {
-        foreach($options as $option => $map) {
+        foreach ($options as $option => $map) {
             $opt = $input->getOption($option) ;
             if ($opt) {
                 $settings->$map($opt);
@@ -38,7 +38,7 @@ class Documentation extends BaseCommand
      */
     private function copyTemplateFiles($sourceFolder, $destinationFolder) {
 
-        if ( DIRECTORY_SEPARATOR !== substr($destinationFolder, -1,1)) {
+        if ( DIRECTORY_SEPARATOR !== substr($destinationFolder, -1, 1)) {
             $destinationFolder .= DIRECTORY_SEPARATOR;
         }
 
@@ -74,7 +74,7 @@ class Documentation extends BaseCommand
     {
         $this->output = $output;
         $tests = $input->getOption('tests');
-        if(!$tests) {
+        if (!$tests) {
             $this->writeError("Must specify the tests folder");
             echo $this->getHelp();
             exit(253);
@@ -90,9 +90,9 @@ class Documentation extends BaseCommand
         }
 
         $bootstrap = realpath($input->getOption('bootstrap'));
-        if(file_exists($bootstrap)) {
-            $output->writeln('<info>Loading bootstrap file:</info> ' . $bootstrap );
-            require $bootstrap;
+        if (file_exists($bootstrap)) {
+            $output->writeln('<info>Loading bootstrap file:</info> ' . $bootstrap);
+            require_once $bootstrap;
         }
 
         $runner = new FilesystemRunner($tests);
@@ -109,15 +109,15 @@ class Documentation extends BaseCommand
             'name' => 'setProjectName',
         ), $input);
 
-        $template = Factory::getTemplate($runner, $settings, $outputFolder );
+        $template = Factory::getTemplate($runner, $settings, $outputFolder);
         $template->write();
 //         $writter->write($outputFolder . DIRECTORY_SEPARATOR . 'index.html');
 
 
-        $output->writeln('<info>copying template asset files</info> ' . $bootstrap );
-        $this->copyTemplateFiles($settings->getTemplateRoot() ,$outputFolder );
+        $output->writeln('<info>copying template asset files</info>');
+        $this->copyTemplateFiles($settings->getTemplateRoot(), $outputFolder);
         if ($settings->getTemplateFolder()) {
-            $this->copyTemplateFiles(realpath($settings->getTemplateFolder()) ,$outputFolder );
+            $this->copyTemplateFiles(realpath($settings->getTemplateFolder()), $outputFolder);
         }
 
 

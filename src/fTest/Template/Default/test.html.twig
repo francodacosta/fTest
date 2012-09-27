@@ -4,10 +4,10 @@
    %}
 <div class="test {{ test.getName()|escape }}">
     <a name="test.{{  test.getName() }}"></a>
-    <h2 class="{% if not stable %}unstable{% endif %}">{{ test.getTitle() }}</h2>
+    {#}<h2 class="{% if not stable %}unstable{% endif %}">{{ test.getTitle() }}</h2>
     {% if not stable %}
        <p><span class="unstable"><strong>Not stable</strong> {{ test.getResult().getCode() }}: {{ test.getResult().getMessage() }}</span></p>
-    {% endif %}
+    {% endif %}#}
     <p class="description">{{ test.getDescription() }}</p>
 
 

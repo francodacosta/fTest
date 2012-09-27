@@ -45,13 +45,12 @@ class TestsCommand extends BaseCommand
 
         if (file_exists($bootstrap)) {
             $output->writeln('<info>Loading bootstrap file:</info> ' . $bootstrap);
-            require $bootstrap;
+            require_once $bootstrap;
         }
 
         $output->writeln("");
         ob_start();
         $runner->run();
-        ob_end_clean();
 
         $count = 0;
         foreach ($runner->getTests() as $test) {
